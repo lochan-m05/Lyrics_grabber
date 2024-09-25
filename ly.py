@@ -1,3 +1,4 @@
+
 # import all the imp lib
 import os
 import json
@@ -6,10 +7,10 @@ import spotipy
 import lyricsgenius as lg
 
 # store the env varlable
-spotipy_client_id = os.environ['SPOTIPY_CLIENT_ID']
-spotipy_client_secret = os.environ['SPOTIPY_CLIENT_SECRET']
-spotipy_redirect_uri = os.environ['SPOTIPY_REDIRECT_URl']
-genius_access_token = os.environ['GENIUS_ACCESS_TOKEN']
+spotipy_client_id = 'b4a7b20e1b134598aea09cae9b0ec44e'
+spotipy_client_secret = '8b6dd42c81cb47989d6cc2c223db3d54'
+spotipy_redirect_uri = 'https://www.google.com/'
+genius_access_token = os.environ.get('GENIUS_ACCESS_TOKEN')
 
 # scope is used to read the currently playing song 
 scope = 'user-read-currently-playing'
@@ -18,12 +19,18 @@ scope = 'user-read-currently-playing'
 oauth_object = spotipy.SpotifyOAuth(client_id=spotipy_client_id,
                                     client_secret=spotipy_client_secret,
                                     redirect_uri=spotipy_redirect_uri,
-                                    scope=scope,
-                                    cache_path="E:Python/.cache" )
+                                    scope=scope ,
+                                    cache_path="E:Python/.cache")
 
-#to get the access token
-token_dict = oauth_object.get_access_token()
-token = token_dict['access_token']
+# Get the access token (use the cached token if available)
+token_dict = oauth_object.get_cached_token()
+token=token_dict['access_token']
+
+if token_dict is None:
+    print("No cached token found redirecting to Spotify login for authorization")
+    token_dict = oauth_object.get_access_token()
+    token = token_dict['access_token']
+
 
 #create spotipy and genius object
 spotipy_object = spotipy.Spotify(auth=token)
