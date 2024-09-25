@@ -22,7 +22,7 @@ oauth_object = spotipy.SpotifyOAuth(client_id=spotipy_client_id,
                                     scope=scope ,
                                     cache_path="E:Python/.cache")
 
-# Get the access token (use the cached token if available)
+#use the cached token if available
 token_dict = oauth_object.get_cached_token()
 token=token_dict['access_token']
 
