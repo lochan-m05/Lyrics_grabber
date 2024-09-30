@@ -6,8 +6,8 @@ import lyricsgenius as lg
 #Spotify and Genius API credentials
 spotipy_client_id = 'b4a7b20e1b134598aea09cae9b0ec44e'
 spotipy_client_secret = '8b6dd42c81cb47989d6cc2c223db3d54'
-spotipy_redirect_uri = 'https://www.google.com/'  # Should be the actual registered redirect URI
-genius_access_token = os.environ.get('GENIUS_ACCESS_TOKEN')  # Ensure this is set in the environment
+spotipy_redirect_uri = 'https://www.google.com/'  
+genius_access_token = os.environ.get('GENIUS_ACCESS_TOKEN')  
 
 # Scope for Spotify (to read currently playing song)
 scope = 'user-read-currently-playing'
