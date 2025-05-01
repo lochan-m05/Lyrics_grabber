@@ -4,8 +4,8 @@ import spotipy
 import lyricsgenius as lg
 
 #Spotify and Genius API credentials
-spotipy_client_id = 'b4a7b20e1b134598aea09cae9b0ec44e'
-spotipy_client_secret = '8b6dd42c81cb47989d6cc2c223db3d54'
+spotipy_client_id = 'Your Id'
+spotipy_client_secret = 'sp secret id'
 spotipy_redirect_uri = 'https://www.google.com/'  
 genius_access_token = os.environ.get('GENIUS_ACCESS_TOKEN')  
 
